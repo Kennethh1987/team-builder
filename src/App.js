@@ -1,24 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+
 import './App.css';
+import ReactDom from "react-dom"
+import Form from "./Form";
+import Buddies from "./Buddies";
+
 
 function App() {
+
+
+
+  const [buddies, setBuddies] = useState ([
+
+    {
+      name: "Nba Cancelled",
+      email: "Nbacancelled@gmail.com",
+      role:  "Basketball"
+    },
+    {
+      name: "Nfl Cancelled",
+      email: "Nflcancelled@gmail.com",
+      role: "Football"
+
+
+    },
+
+    {
+      name: "Mlb Cancelled",
+      email: "Mlbcancelled@gmail.com",
+      role: "Baseball"
+
+    }
+  ])
+
+  const addNewBuddie = buddie => {
+    setBuddies ([...buddies, buddie])
+  }
+  const buddieToEdit = () => {
+
+
+  }
+
+
   return (
+
+
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Sports Buddies</h1>
+      <Form addNewBuddie={addNewBuddie} />
+      <Buddies buddiesList={buddies} />
+
     </div>
   );
 }
